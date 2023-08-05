@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <meta charset="UTF-8">
+  <title>Scrap Mechanic Keybinds Editor</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <div class="controls">
+      <input type="file" id="keybindsFile" autocomplete="off">
+      <button id="download" style="float: right">Download</button>
+    </div>
+    <div class="controls">
+      <span id="version">N/A</span>
+    </div>
+    <div class="controls">
+      <label><input id="showConflicts" type="checkbox" autocomplete="off">Highlight potential conflicts</label>
+    </div>
+
+    <table id="keybindsTable" border="1">
+      <thead>
+        <tr>
+          <th>Action</th>
+          <th>Keybinds</th>
+        </tr>
+      </thead>
+      <tbody>
+      </tbody>
+    </table>
+
+    <div>The following notes apply to keybinds version 7:</div>
+    <ul>
+      <li>This tool enables the modification of specific keybinds that cannot be altered from the in-game settings. It also permits the assignment of more than two keybinds per action.</li>
+      <li>Apply any changes to keybinds within the game to ensure that <span class="mono">keybinds.json</span> is updated to the latest version.</li>
+      <li>Locate <span class="mono">keybinds.json</span> in <span class="mono">C:\Users\your_user_name\AppData\Roaming\Axolot Games\Scrap Mechanic\User\User_XXXXXXXXXXXXXXXXX\</span>.</li>
+      <li>Before making changes, create a backup copy of <span class="mono">keybinds.json</span>.</li>
+      <li>Actions prefixed with <span class="mono">C_</span> (likely denoting Creation) are specific to actions performed while the character is in a seat. Any non-prefixed counterpart actions are entirely distinct, allowing for seperate keybinds without triggering one another. For instance, the keybinds for actions <span class="mono">C_Item0</span> and <span class="mono">MenuItem0</span> do not need to match, and triggering a keybind assigned to one of the actions will not activate the other action, and vice versa.</li>
+      <li>The <span class="mono">C_Create</span> and <span class="mono">C_Attack</span> actions correspond to <span class="mono">C_Item0</span> and <span class="mono">C_Item1</span> actions respectively. These served to allow the left and right mouse clicks to activate the first 2 buttons/switches hooked up to a seat. The actions are redundant since the keybind editor makes it possible for any keybinds to be assigned directly to <span class="mono">C_Item0</span> and <span class="mono">C_Item1</span>.</li>
+      <li>Both <span class="mono">C_Jump</span> and <span class="mono">C_Use</span> actions serve the purpose of exiting a seat. Only one of them is necessary.</li>
+      <li>Modifying/Adding keybinds for <span class="mono">C_ZoomIn</span> and <span class="mono">C_ZoomOut</span> actions have no effect. The actions seem to be hard-coded to <span class="mono">Alt + ScrollUp/ScrollDown</span> in the game.</li>
+      <li>Keybinds for the <span class="mono">Camera</span> action also has no impact. The action is likely used to change camera modes and is hard-coded to <span class="mono">Ctrl</span> in the game.</li>
+      <li>Download the modified <span class="mono">keybinds.json</span> file when done modifying and place it back in the directory.</li>
+      <li>Any adjustments made to <span class="mono">keybinds.json</span> will only take effect after reloading the game (exit completely and then relaunch).</li>
+    </ul>
+
+    <div id="keybindEditModal">
+      <div class="modal-content">
+        <div id="action"></div>
+
+        <div>
+          <label><input id="isCtrl" type="checkbox" autocomplete="off">Ctrl</label>
+          <label><input id="isShift" type="checkbox" autocomplete="off">Shift</label>
+          <label><input id="isAlt" type="checkbox" autocomplete="off">Alt</label>
+
+          <select id="keysList">
+            <optgroup label="Mouse">
+              <option value="MB_0">Mouse1</option>
+              <option value="MB_1">Mouse2</option>
+              <option value="MB_2">Mouse3</option>
+              <option value="MB_3">Mouse4</option>
+              <option value="MB_4">Mouse5</option>
+              <option value="MB_5">Mouse6</option>
+              <option value="MB_6">Mouse7</option>
+              <option value="MS_1">ScrollUp</option>
+              <option value="MS_-1">ScrollDown</option>
+            </optgroup>
+            <optgroup label="Control keys">
+              <option value="K_8">Backspace</option>
+              <option value="K_9">Tab</option>
+              <option value="K_13">Enter</option>
+              <option value="K_16">Shift</option>
+              <option value="K_17">Ctrl</option>
+              <option value="K_18">Alt</option>
+              <option value="K_19">Pause</option>
+              <option value="K_20">CapsLock</option>
+              <option value="K_27">Escape</option>
+              <option value="K_32">Space</option>
+              <option value="K_33">PageUp</option>
+              <option value="K_34">PageDown</option>
+              <option value="K_35">End</option>
+              <option value="K_36">Home</option>
+              <option value="K_37">ArrowLeft</option>
+              <option value="K_38">ArrowUp</option>
+              <option value="K_39">ArrowRight</option>
+              <option value="K_40">ArrowDown</option>
+              <option value="K_45">Insert</option>
+              <option value="K_46">Delete</option>
+            </optgroup>
+            <optgroup label="Number keys">
+              <option value="K_48">0</option>
+              <option value="K_49">1</option>
+              <option value="K_50">2</option>
+              <option value="K_51">3</option>
+              <option value="K_52">4</option>
+              <option value="K_53">5</option>
+              <option value="K_54">6</option>
+              <option value="K_55">7</option>
+              <option value="K_56">8</option>
+              <option value="K_57">9</option>
+            </optgroup>
+            <optgroup label="Letter keys">
+              <option value="K_65">A</option>
+              <option value="K_66">B</option>
+              <option value="K_67">C</option>
+              <option value="K_68">D</option>
+              <option value="K_69">E</option>
+              <option value="K_70">F</option>
+              <option value="K_71">G</option>
+              <option value="K_72">H</option>
+              <option value="K_73">I</option>
+              <option value="K_74">J</option>
+              <option value="K_75">K</option>
+              <option value="K_76">L</option>
+              <option value="K_77">M</option>
+              <option value="K_78">N</option>
+              <option value="K_79">O</option>
+              <option value="K_80">P</option>
+              <option value="K_81">Q</option>
+              <option value="K_82">R</option>
+              <option value="K_83">S</option>
+              <option value="K_84">T</option>
+              <option value="K_85">U</option>
+              <option value="K_86">V</option>
+              <option value="K_87">W</option>
+              <option value="K_88">X</option>
+              <option value="K_89">Y</option>
+              <option value="K_90">Z</option>
+            </optgroup>
+            <optgroup label="Function keys">
+              <option value="K_112">F1</option>
+              <option value="K_113">F2</option>
+              <option value="K_114">F3</option>
+              <option value="K_115">F4</option>
+              <option value="K_116">F5</option>
+              <option value="K_117">F6</option>
+              <option value="K_118">F7</option>
+              <option value="K_119">F8</option>
+              <option value="K_120">F9</option>
+              <option value="K_121">F10</option>
+              <option value="K_122">F11</option>
+              <option value="K_123">F12</option>
+            </optgroup>
+            <optgroup label="Special keys">
+              <option value="K_144">NumLock</option>
+              <option value="K_145">ScrollLock</option>
+              <option value="K_186">;</option>
+              <option value="K_187">=</option>
+              <option value="K_188">,</option>
+              <option value="K_189">-</option>
+              <option value="K_190">.</option>
+              <option value="K_191">/</option>
+              <option value="K_192">`</option>
+              <option value="K_219">[</option>
+              <option value="K_220">\</option>
+              <option value="K_221">]</option>
+              <option value="K_222">'</option>
+            </optgroup>
+          </select>
+        </div>
+
+        <div>
+          <button id="save">Save</button>
+          <button id="delete">Delete</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="tooltip"></div>
+  </div>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
