@@ -33,6 +33,7 @@ button[disabled] {
 .mono {
   font-family: "Courier New";
   background-color: #555;
+  white-space: nowrap;
 }
 
 #version::before {
@@ -42,6 +43,7 @@ button[disabled] {
 li {
   line-height: 1.5em;
   margin-bottom: 0.75em;
+  text-align: justify;
 }
 
 #keybindsTable {
