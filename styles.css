@@ -33,7 +33,6 @@ button[disabled] {
 .mono {
   font-family: "Courier New";
   background-color: #555;
-  white-space: nowrap;
 }
 
 #version::before {
