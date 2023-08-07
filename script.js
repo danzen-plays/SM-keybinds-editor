@@ -15,13 +15,13 @@ $(document).ready(function() {
   function setKeybind(keybindTarget, keybindData) {
     keybindTarget.removeData().data(keybindData);
 
-    var str = '';
+    var kbStr = '';
     if (keybindData.Ctrl === true)
-      str += 'Ctrl + ';
+      kbStr += 'Ctrl + ';
     if (keybindData.Shift === true)
-      str += 'Shift + ';
+      kbStr += 'Shift + ';
     if (keybindData.Alt === true)
-      str += 'Alt + ';
+      kbStr += 'Alt + ';
 
     var value = "";
     if ("K" in keybindData)
@@ -31,8 +31,8 @@ $(document).ready(function() {
     else if ("MS" in keybindData)
       value = 'MS_' + keybindData.MS;
 
-    str += keysList.find(`option[value="${value}"]`).text();
-    keybindTarget.text(str).attr('value', value).attr('string', str);
+    kbStr += keysList.find(`option[value="${value}"]`).text();
+    keybindTarget.text(kbStr).attr('value', value).attr('kb-str', kbStr);
   }
 
 
@@ -43,8 +43,20 @@ $(document).ready(function() {
       const row = $(this);
       row.find('span.keybind').each(function() {
         const keybind = $(this);
-        const str = keybind.attr('string');
-        const conflicts = row.siblings('tr').find(`span.keybind[string="${str}"]`).map(function() { return $(this).parents('tr').find('td.action').text(); }).get();
+        const hasPrefix = keybind.parents('tr').find('td.action').text().startsWith('C_');
+        const kbStr = keybind.attr('kb-str');
+
+        const conflicts = row.siblings('tr').find(`span.keybind[kb-str="${kbStr}"]`).map(function() {
+          const action = $(this).parents('tr').find('td.action').text();
+          if (action.startsWith('C_')) {
+            if (hasPrefix)
+              return action;
+          }
+          else {
+            if (!hasPrefix)
+              return action;
+          }
+        }).get();
 
         if (conflicts.length)
           keybind.addClass('conflict').attr('conflicts', conflicts.join(', '));
