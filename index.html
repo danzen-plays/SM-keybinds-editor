@@ -32,16 +32,32 @@
 
     <div>The following notes apply to keybinds version 7:</div>
     <ul>
-      <li>This tool enables the modification of specific keybinds that cannot be altered from the in-game settings. It also permits the assignment of more than two keybinds per action.</li>
-      <li>Apply any changes to keybinds within the game to ensure that <span class="mono">keybinds.json</span> is updated to the latest version.</li>
+      <li>This tool enables the modification of specific keybinds that cannot be altered from the in-game settings. It also allows the assignment of more than two keybinds per action or even the removal all keybinds entirely.</li>
+
       <li>Locate <span class="mono">keybinds.json</span> in <span class="mono">C:\<wbr>Users\<wbr>your_user_name\<wbr>AppData\<wbr>Roaming\<wbr>Axolot&nbsp;Games\<wbr>Scrap&nbsp;Mechanic\<wbr>User\<wbr>User_XXXXXXXXXXXXXXXXX\</span>.</li>
+
       <li>Before making changes, create a backup copy of <span class="mono">keybinds.json</span>.</li>
+
+      <li>Within the game settings, reset the controls to their default configuration, and then make a valid keybind change for any action. This process will ensure that a complete and updated version of <span class="mono">keybinds.json</span> is saved.</li>
+
+      <li>Upload <span class="mono">keybinds.json</span> to the editor with the <span class="mono">Browse</span> button. To alter keybinds, simply click on one, make the necessary changes, and then click <span class="mono">Save</span>. Keybinds can be removed similarly by clicking on <span class="mono">Delete</span> instead. Click on the <span class="mono">+</span> signs to add new keybinds.</li>
+
       <li>Actions with the prefix <span class="mono">C_</span> (likely denoting Creation) are specific to actions performed while the character is in a seat. Keybinds for actions with the prefix and keybinds for actions without the prefix are mutually exclusive. This means that the same keybinds can be used for both an action with the prefix and an action without the prefix without any conflict.</li>
+
       <li>The <span class="mono">C_Create</span> and <span class="mono">C_Attack</span> actions correspond to <span class="mono">C_Item0</span> and <span class="mono">C_Item1</span> actions respectively. These served to allow the left and right mouse clicks to activate the first 2 buttons/switches hooked up to a seat. The actions are redundant since the keybind editor makes it possible for any keybinds to be assigned directly to <span class="mono">C_Item0</span> and <span class="mono">C_Item1</span>.</li>
+
       <li>Both <span class="mono">C_Jump</span> and <span class="mono">C_Use</span> actions serve the purpose of exiting a seat. Only one of them is necessary.</li>
+
       <li>Modifying/Adding keybinds for <span class="mono">C_ZoomIn</span> and <span class="mono">C_ZoomOut</span> actions have no effect. The actions seem to be hard-coded to <span class="mono">Alt&nbsp;+&nbsp;ScrollUp/ScrollDown</span> in the game.</li>
+
       <li>Keybinds for the <span class="mono">Camera</span> action also has no impact. The action is likely used to change camera modes and is hard-coded to <span class="mono">Ctrl</span> in the game.</li>
+
+      <li>Scrap Mechanic does not recognise numpad keys.</li>
+
+      <li>Unassigning all keybinds from an action may cause the game to completely remove that action from <span class="mono">keybinds.json</span>. This could occur when you make a keybind change from the in-game settings.</li>
+
       <li>Download the modified <span class="mono">keybinds.json</span> file when done modifying and place it back in the directory.</li>
+
       <li>Any adjustments made to <span class="mono">keybinds.json</span> will only take effect after reloading the game (exit completely and then relaunch).</li>
     </ul>
 
