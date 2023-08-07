@@ -16,7 +16,7 @@
       <span id="version">N/A</span>
     </div>
     <div class="controls">
-      <label><input id="showConflicts" type="checkbox" autocomplete="off">Highlight <em>potential</em> conflicts</label>
+      <label><input id="showConflicts" type="checkbox" autocomplete="off">Highlight conflicts</label>
     </div>
 
     <table id="keybindsTable" border="1">
@@ -36,7 +36,7 @@
       <li>Apply any changes to keybinds within the game to ensure that <span class="mono">keybinds.json</span> is updated to the latest version.</li>
       <li>Locate <span class="mono">keybinds.json</span> in <span class="mono">C:\<wbr>Users\<wbr>your_user_name\<wbr>AppData\<wbr>Roaming\<wbr>Axolot&nbsp;Games\<wbr>Scrap&nbsp;Mechanic\<wbr>User\<wbr>User_XXXXXXXXXXXXXXXXX\</span>.</li>
       <li>Before making changes, create a backup copy of <span class="mono">keybinds.json</span>.</li>
-      <li>Actions prefixed with <span class="mono">C_</span> (likely denoting Creation) are specific to actions performed while the character is in a seat. Any non-prefixed counterpart actions are entirely distinct, allowing for seperate keybinds without triggering one another. For instance, the keybinds for actions <span class="mono">C_Item0</span> and <span class="mono">MenuItem0</span> do not need to match, and triggering a keybind assigned to one of the actions will not activate the other action, and vice versa.</li>
+      <li>Actions prefixed with <span class="mono">C_</span> (likely denoting Creation) are specific to actions performed while the character is in a seat. Keybinds for actions with the prefix and keybinds for actions without the prefix are mutually exclusive. This means that the same keybinds can be used for both an action with the prefix and an action without the prefix without any conflict.</li>
       <li>The <span class="mono">C_Create</span> and <span class="mono">C_Attack</span> actions correspond to <span class="mono">C_Item0</span> and <span class="mono">C_Item1</span> actions respectively. These served to allow the left and right mouse clicks to activate the first 2 buttons/switches hooked up to a seat. The actions are redundant since the keybind editor makes it possible for any keybinds to be assigned directly to <span class="mono">C_Item0</span> and <span class="mono">C_Item1</span>.</li>
       <li>Both <span class="mono">C_Jump</span> and <span class="mono">C_Use</span> actions serve the purpose of exiting a seat. Only one of them is necessary.</li>
       <li>Modifying/Adding keybinds for <span class="mono">C_ZoomIn</span> and <span class="mono">C_ZoomOut</span> actions have no effect. The actions seem to be hard-coded to <span class="mono">Alt&nbsp;+&nbsp;ScrollUp/ScrollDown</span> in the game.</li>
