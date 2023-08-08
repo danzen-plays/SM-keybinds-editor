@@ -43,21 +43,9 @@ $(document).ready(function() {
       const row = $(this);
       row.find('span.keybind').each(function() {
         const keybind = $(this);
-        const hasPrefix = keybind.parents('tr').find('td.action').text().startsWith('C_');
         const kbStr = keybind.attr('kb-str');
 
-        const conflicts = row.siblings('tr').find(`span.keybind[kb-str="${kbStr}"]`).map(function() {
-          const action = $(this).parents('tr').find('td.action').text();
-          if (action.startsWith('C_')) {
-            if (hasPrefix)
-              return action;
-          }
-          else {
-            if (!hasPrefix)
-              return action;
-          }
-        }).get();
-
+        const conflicts = row.siblings('tr').find(`span.keybind[kb-str="${kbStr}"]`).map(function() { return $(this).parents('tr').find('td.action').text(); }).get();
         if (conflicts.length)
           keybind.addClass('conflict').attr('conflicts', conflicts.join(', '));
       });
