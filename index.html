@@ -42,21 +42,27 @@
 
       <li>Upload <span class="mono">keybinds.json</span> to the editor with the <span class="mono">Browse</span> button. To alter keybinds, simply click on one, make the desired changes, and then click <span class="mono">Save</span>. Keybinds can be removed similarly by clicking on <span class="mono">Delete</span> instead. Click on the <span class="mono">+</span> signs to add new keybinds.</li>
 
-      <li>Actions with the prefix <span class="mono">C_</span> (likely denoting Creation) are specific to actions performed while the character is in a seat. Keybinds for actions with the prefix and keybinds for actions without the prefix are mutually exclusive. This means that the same keybinds can be used for both an action with the prefix and an action without the prefix without any conflict.</li>
+      <li>The checkbox to highlight potential conflicts only performs a "dumb" check. Keybinds will be highlighted as long as the code detects the same keybind in more than one place. Some actions can share keybinds with no issues in-game (detailed below). A tooltip will be displayed when hovering over a conflicting keybind, showing other actions that are using the same keybind.</li>
 
-      <li>The <span class="mono">C_Create</span> and <span class="mono">C_Attack</span> actions correspond to <span class="mono">C_Item0</span> and <span class="mono">C_Item1</span> actions respectively. These served to allow the left and right mouse clicks to activate the first 2 buttons/switches hooked up to a seat. The actions are redundant since the keybind editor makes it possible for any keybinds to be assigned directly to <span class="mono">C_Item0</span> and <span class="mono">C_Item1</span>.</li>
+      <li>Actions with the prefix <span class="mono">C_</span> (likely denoting Creation) are specific to actions performed while the character is in a seat.</li>
 
-      <li>Both <span class="mono">C_Jump</span> and <span class="mono">C_Use</span> actions serve the purpose of exiting a seat. Only one of them is necessary.</li>
+      <li>The in-game hotbar can hold two categories of items: one for tools, parts, and building blocks, and the other for the buttons and switches connected to a seat. These are, in fact, two distinct hotbars (referred to as the regular hotbar and the creation hotbar), with the former mapped to the <span class="mono">MenuItem0</span>-<span class="mono">MenuItem9</span> actions and the latter mapped to the <span class="mono">C_Item0</span>-<span class="mono">C_Item9</span> actions. In-game settings are limited to assigning the same keybinds to both sets of hotbars, but the editor allows for different keybinds. This holds true for the other <span class="mono">C_</span> actions as well.</li>
+
+      <li>Most keybinds for non-prefixed actions can be reused for prefixed actions without any issues. For example, the keybind(s) for the <span class="mono">Sprint</span> action (<span class="mono">Shift</span> by default) can also be simultaneously used as the keybind(s) for one of the creation hotbar slots because the character cannot sprint while in a seat. On the other hand, the keybind(s) for the <span class="mono">Handbook</span> action (<span class="mono">H</span> by default) cannot be reused, as a character in a seat can still pull up the handbook.</li>
+
+      <li>The <span class="mono">C_Create</span> and <span class="mono">C_Attack</span> actions are bound to the left and right mouse clicks by default and cannot be modified in-game. In terms of functionality, these two actions are replicas of the <span class="mono">C_Item0</span> and <span class="mono">C_Item1</span> actions, which correspond to the first two slots of the creation hotbar. The editor renders the <span class="mono">C_Create</span> and <span class="mono">C_Attack</span> actions redundant since it allows mouse clicks to be directly assigned to any of the creation hotbar slots.</li>
+
+      <li>Both the <span class="mono">C_Jump</span> and <span class="mono">C_Use</span> actions serve the purpose of exiting a seat however, only one of them is necessary. If multiple keybinds are required, they can be assigned to a single action.</li>
 
       <li>Modifying/Adding keybinds for <span class="mono">C_ZoomIn</span> and <span class="mono">C_ZoomOut</span> actions have no effect. The actions seem to be hard-coded to <span class="mono">Alt&nbsp;+&nbsp;ScrollUp/ScrollDown</span> in the game.</li>
 
-      <li>Keybinds for the <span class="mono">Camera</span> action also has no impact. The action is likely used to change camera modes and is hard-coded to <span class="mono">Ctrl</span> in the game.</li>
+      <li>Keybinds for the <span class="mono">Camera</span> action also has no impact. Most likely, the action was intended for changing camera modes but is hard-coded to <span class="mono">Ctrl</span> in the game.</li>
 
       <li>Scrap Mechanic does not recognise numpad keys.</li>
 
       <li>Unassigning all keybinds from an action may cause the game to completely remove that action from <span class="mono">keybinds.json</span>. This could occur when you make a keybind change from the in-game settings.</li>
 
-      <li>Download the modified <span class="mono">keybinds.json</span> file when done modifying and place it back in the directory.</li>
+      <li>Download the modified keybinds.json file when done modifying and place it back in the directory. Ensure that the file extension is <span class="mono">.json</span>.</li>
 
       <li>Any adjustments made to <span class="mono">keybinds.json</span> will only take effect after reloading the game (exit completely and then relaunch).</li>
     </ul>
@@ -157,6 +163,26 @@
               <option value="K_121">F10</option>
               <option value="K_122">F11</option>
               <option value="K_123">F12</option>
+              <option value="K_124">F13</option>
+              <option value="K_125">F14</option>
+              <option value="K_126">F15</option>
+              <option value="K_127">F16</option>
+              <option value="K_128">F17</option>
+              <option value="K_129">F18</option>
+              <option value="K_130">F19</option>
+              <option value="K_131">F20</option>
+              <option value="K_132">F21</option>
+              <option value="K_133">F22</option>
+              <option value="K_134">F23</option>
+              <option value="K_135">F24</option>
+              <option value="K_136">F25</option>
+              <option value="K_137">F26</option>
+              <option value="K_138">F27</option>
+              <option value="K_139">F28</option>
+              <option value="K_140">F29</option>
+              <option value="K_141">F30</option>
+              <option value="K_142">F31</option>
+              <option value="K_143">F32</option>
             </optgroup>
             <optgroup label="Special keys">
               <option value="K_144">NumLock</option>
